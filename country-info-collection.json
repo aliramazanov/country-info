@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "f204f7ad-58cf-43ad-ae15-6a26c12a2f90",
+		"name": "Country Info",
+		"description": "Country Info App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29487700"
+	},
+	"item": [
+		{
+			"name": "Countries",
+			"item": [
+				{
+					"name": "Get Available Countries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/countries",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"countries"
+							]
+						},
+						"description": "Get a list of all available countries"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Country Info - US",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/countries/US",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"countries",
+								"US"
+							]
+						},
+						"description": "Get detailed information about a specific country including borders, population data, and flag URL"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Country Info - CH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/countries/CH",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"countries",
+								"CH"
+							]
+						},
+						"description": "Get detailed information about Germany"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Country Info - Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/countries/XX",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"countries",
+								"XX"
+							]
+						},
+						"description": "Test with an invalid country code"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints related to country information"
+		},
+		{
+			"name": "Calendar",
+			"item": [
+				{
+					"name": "Add Holidays to Calendar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"countryCode\": \"US\",\n    \"year\": 2025,\n    \"holidays\": [\"New Year's Day\", \"Independence Day\"]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/{{userId}}/calendar/holidays",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"calendar",
+								"holidays"
+							]
+						},
+						"description": "Add selected holidays to a user's calendar"
+					},
+					"response": []
+				},
+				{
+					"name": "Add All Holidays to Calendar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"countryCode\": \"US\",\n    \"year\": 2025\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/{{userId}}/calendar/holidays",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"calendar",
+								"holidays"
+							]
+						},
+						"description": "Add all holidays for a country to the calendar (without filtering)"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Holidays - Error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"countryCode\": \"US\",\n    \"year\": 2025,\n    \"holidays\": [\"New Year's Day\", \"Independence Day\"]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/000000000000000000000000/calendar/holidays",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"000000000000000000000000",
+								"calendar",
+								"holidays"
+							]
+						},
+						"description": "Test with a non-existent user ID"
+					},
+					"response": []
+				},
+				{
+					"name": "View User Holidays",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/{{userId}}/calendar/holidays",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"calendar",
+								"holidays"
+							]
+						},
+						"description": "View all holidays added to a user's calendar"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Public Holidays - US",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/public-holidays/2025/US",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"public-holidays",
+								"2025",
+								"US"
+							]
+						},
+						"description": "View public holidays for a specific country and year directly from Date Nager API"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints related to calendar functionality"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "644a612a1fe93a876543210f",
+			"type": "string"
+		}
+	]
+}
